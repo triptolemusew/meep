@@ -1,9 +1,11 @@
 use Mix.Config
 
-config :backend, Friends.Repo,
+config :backend, Backend.Repo,
   database: "backend_repo",
-  username: "user",
-  password: "pass",
+  username: "postgres",
+  password: "postgres",
   hostname: "localhost"
 
 import_config "#{Mix.env()}.exs"
+
+config :backend, ecto_repos: [Backend.Repo]
