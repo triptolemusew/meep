@@ -1,22 +1,3 @@
-# defmodule Backend do
-#   @moduledoc """
-#   Documentation for `Backend`.
-#   """
-
-#   @doc """
-#   Hello world.
-
-#   ## Examples
-
-#       iex> Backend.hello()
-#       :world
-
-#   """
-#   def hello do
-#     :world
-#   end
-# end
-
 defmodule Backend do
   use Application
 
@@ -30,8 +11,7 @@ defmodule Backend do
       Plug.Cowboy.child_spec(
         scheme: :http,
         plug: Backend.Endpoint,
-        # options: [port: String.to_integer(System.get_env("APP_PORT") || "4000")]
-        options: [port: 4000]
+        options: [port: String.to_integer(System.get_env("APP_PORT") || "4000")]
       )
     ]
 
