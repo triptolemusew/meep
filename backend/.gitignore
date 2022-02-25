@@ -26,3 +26,5 @@ backend-*.tar
 /tmp/
 
 .tool-versions
+
+.elixir_ls/
