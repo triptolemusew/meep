@@ -1,18 +1,42 @@
+# defmodule Backend do
+#   @moduledoc """
+#   Documentation for `Backend`.
+#   """
+
+#   @doc """
+#   Hello world.
+
+#   ## Examples
+
+#       iex> Backend.hello()
+#       :world
+
+#   """
+#   def hello do
+#     :world
+#   end
+# end
+
 defmodule Backend do
-  @moduledoc """
-  Documentation for `Backend`.
-  """
+  use Application
 
-  @doc """
-  Hello world.
+  def start(_type, _args) do
+    import Supervisor.Spec, warn: false
 
-  ## Examples
+    IO.puts("Application startsading...")
 
-      iex> Backend.hello()
-      :world
+    children = [
+      Backend.Repo,
+      Plug.Cowboy.child_spec(
+        scheme: :http,
+        plug: Backend.Endpoint,
+        # options: [port: String.to_integer(System.get_env("APP_PORT") || "4000")]
+        options: [port: 4000]
+      )
+    ]
 
-  """
-  def hello do
-    :world
+    opts = [strategy: :one_for_one, name: Backend.Supervisor]
+
+    Supervisor.start_link(children, opts)
   end
 end
