@@ -5,7 +5,7 @@ defmodule Backend.MixProject do
     [
       app: :backend,
       version: "0.1.0",
-      elixir: "~> 1.12",
+      elixir: "~> 1.13.2",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       aliases: aliases(),
@@ -36,7 +36,8 @@ defmodule Backend.MixProject do
       {:poison, "~> 4.0"},
 
       # test helpers
-      {:excoveralls, "~> 0.10", only: :test}
+      {:excoveralls, "~> 0.10", only: :test},
+      {:faker, "~> 0.17.0", only: :test}
     ]
   end
 
