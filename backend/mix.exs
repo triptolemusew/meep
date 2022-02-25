@@ -8,6 +8,7 @@ defmodule Backend.MixProject do
       elixir: "~> 1.12",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      aliases: aliases(),
       releases: [
         prod: [
           include_executable_for: [:unix],
@@ -21,7 +22,7 @@ defmodule Backend.MixProject do
   def application do
     [
       # name of the application of any module implementing the Application
-      mod: {Backend.Application, []},
+      mod: {Backend, []},
       extra_applications: [:logger, :plug_cowboy]
     ]
   end
@@ -36,6 +37,15 @@ defmodule Backend.MixProject do
 
       # test helpers
       {:excoveralls, "~> 0.10", only: :test}
+    ]
+  end
+
+  # Aliases are shortcut or tasks specifics to the current project
+  defp aliases do
+    [
+      "ecto.setup": ["ecto.create", "ecto.migrate"],
+      "ecto.reset": ["ecto.drop", "ecto.setup"],
+      "run:dev": ["run --no-halt"]
     ]
   end
 end
