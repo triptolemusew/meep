@@ -37,7 +37,7 @@ defmodule Backend.MixProject do
 
       # test helpers
       {:excoveralls, "~> 0.10", only: :test},
-      {:faker, "~> 0.17.0", only: :test}
+      {:faker, "~> 0.17.0", only: [:dev, :test]}
     ]
   end
 
