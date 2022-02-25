@@ -34,8 +34,9 @@ defmodule Backend.MixProject do
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       {:poison, "~> 4.0"},
+      {:extwitter, "~> 0.12"},
 
-      # test helpers
+      # Test helpers
       {:excoveralls, "~> 0.10", only: :test},
       {:faker, "~> 0.17.0", only: [:dev, :test]}
     ]
@@ -46,7 +47,8 @@ defmodule Backend.MixProject do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "run:dev": ["run --no-halt"]
+      "run:dev": ["run --no-halt"],
+      seed: ["run priv/repo/seeds.exs"]
     ]
   end
 end
