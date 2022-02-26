@@ -23,7 +23,7 @@ defmodule Backend.MixProject do
     [
       # name of the application of any module implementing the Application
       mod: {Backend, []},
-      extra_applications: [:logger, :plug_cowboy]
+      extra_applications: [:logger, :plug_cowboy, :jason]
     ]
   end
 
@@ -35,6 +35,8 @@ defmodule Backend.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:poison, "~> 4.0"},
       {:extwitter, "~> 0.12"},
+      {:timex, "~> 3.6"},
+      {:lettuce, "~> 0.1.5", only: :dev},
 
       # Test helpers
       {:excoveralls, "~> 0.10", only: :test},
