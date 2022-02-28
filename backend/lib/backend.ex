@@ -4,8 +4,6 @@ defmodule Backend do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
-    IO.puts("Application startsading...")
-
     children = [
       Backend.Repo,
       Plug.Cowboy.child_spec(
@@ -16,6 +14,8 @@ defmodule Backend do
     ]
 
     opts = [strategy: :one_for_one, name: Backend.Supervisor]
+
+    IO.puts("Application starting...")
 
     Supervisor.start_link(children, opts)
   end
