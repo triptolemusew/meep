@@ -12,12 +12,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "apisauce": "^2.1.5",
+    "axios": "^0.26.0",
     "mobx": "^6.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router": "^6.2.1",
     "styled-components": "^5.3.3"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.6.0",
     "esbuild-loader": "^2.18.0",
     "html-webpack-plugin": "^5.5.0",
