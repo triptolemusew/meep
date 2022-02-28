@@ -28,3 +28,5 @@ backend-*.tar
 .tool-versions
 
 .elixir_ls/
+
+.env

@@ -34,6 +34,7 @@ defmodule Backend.MixProject do
       {:assent, "~> 0.1.28"},
       {:joken, "~> 2.0"},
       {:jason, "~> 1.2"},
+      {:dotenv, "~> 3.0.0"},
 
       # Dev
       {:lettuce, "~> 0.1.5", only: :dev},
