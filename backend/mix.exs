@@ -18,24 +18,24 @@ defmodule Backend.MixProject do
     ]
   end
 
-  # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      # name of the application of any module implementing the Application
       mod: {Backend, []},
-      extra_applications: [:logger, :plug_cowboy, :jason]
+      extra_applications: [:logger, :plug_cowboy]
     ]
   end
 
-  # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:plug_cowboy, "~> 2.5"},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
-      {:poison, "~> 4.0"},
-      {:extwitter, "~> 0.12"},
       {:timex, "~> 3.6"},
+      {:assent, "~> 0.1.28"},
+      {:joken, "~> 2.0"},
+      {:jason, "~> 1.2"},
+
+      # Dev
       {:lettuce, "~> 0.1.5", only: :dev},
 
       # Test helpers
@@ -44,13 +44,12 @@ defmodule Backend.MixProject do
     ]
   end
 
-  # Aliases are shortcut or tasks specifics to the current project
   defp aliases do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      "run:dev": ["run --no-halt"],
-      seed: ["run priv/repo/seeds.exs"]
+      "seed:all": ["run priv/repo/seeds.exs"],
+      "run:dev": ["run --no-halt"]
     ]
   end
 end
