@@ -1,48 +1,39 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-import {backendApi} from '../api';
+import TodosView from './Todos';
+import './App.css';
 
-const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [name, setName] = useState();
-  const [imageUrl, setImageUrl] = useState();
-  const [status, setStatus] = useState();
-  const [url, setUrl] = useState();
-
-  const login = () => {
-    (async () => {
-      const response = await backendApi.getRequest();
-
-      window.location.href = response.data;
-    })();
+class AppSidebar extends React.Component {
+  state = {
+    isOpen: false,
   };
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        {!isLoggedIn && (
-          <img
-            className="signin-btn"
-            onClick={login}
-            alt="Twitter login button"
-            src="https://assets.klaudsol.com/twitter.png"
-          />
-        )}
+  _toggleSidebar() {
+    this.setState({isOpen: !this.state.isOpen});
+  }
 
-        {isLoggedIn && (
-          <div>
-            <div>
-              <img alt="User profile" src={imageUrl} />
-            </div>
-            <div>Name: {name}</div>
-            <div>URL: {url}</div>
-            <div>Status: {status}</div>
-            <button className="signout-btn" onClick={logout}>
-              Sign Out
-            </button>
-          </div>
-        )}
-      </header>
+  render() {
+    return (
+      <aside className={this.state.isOpen ? 'show' : ''}>
+        <span
+          className="toggle-sidebar"
+          onClick={this._toggleSidebar.bind(this)}
+        >
+          <i className="fa fa-arrow-left" aria-hidden="true" />
+        </span>
+      </aside>
+    );
+  }
+}
+
+const App = () => {
+  return (
+    <div id="app">
+      <AppSidebar />
+      <main>
+        <TodosView></TodosView>
+      </main>
+      <div className="screen"></div>
     </div>
   );
 };
