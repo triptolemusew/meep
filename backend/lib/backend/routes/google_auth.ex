@@ -53,6 +53,8 @@ defmodule Backend.Routes.GoogleAuth do
         avatar_url: picture
       })
 
+    access_token = Backend.Token.generate_and_sign!(%{"user_id" => db_user.id})
+
     conn
     |> put_resp_content_type("application/json")
     |> send_resp(200, Jason.encode!(%{user: db_user}))

@@ -19,4 +19,6 @@ config :lettuce,
   refresh_time: 1500,
   compiler_opts: ["--verbose"]
 
+config :joken, default_signer: "secret"
+
 import_config "#{Mix.env()}.exs"
